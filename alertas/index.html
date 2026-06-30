@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alertas | LogMed</title>
+<link rel="icon" href="../imagens/favicon.ico">
+<link rel="stylesheet" href="../shared/css/variaveis.css">
+<link rel="stylesheet" href="../shared/css/global.css">
+<link rel="stylesheet" href="../shared/css/sidebar.css">
+<link rel="stylesheet" href="../shared/css/modulos.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="menu-lateral">
+<div class="marca-menu">
+<img src="../imagens/logo_principal.png" alt="LogMed">
+<div>
+<strong>LogMed</strong>
+<span>Central de Operações</span>
+</div>
+</div>
+<nav class="navegacao-menu" aria-label="Navegação principal">
+<a class="link-menu" href="../dashboard/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<rect x="3" y="3" width="7" height="7" rx="1.5"/>
+<rect x="14" y="3" width="7" height="7" rx="1.5"/>
+<rect x="3" y="14" width="7" height="7" rx="1.5"/>
+<rect x="14" y="14" width="7" height="7" rx="1.5"/>
+</svg>Dashboard</a>
+<a class="link-menu" href="../estoque/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="m4 7 8-4 8 4-8 4-8-4Z"/>
+<path d="m4 7 8 4 8-4v10l-8 4-8-4V7Z"/>
+<path d="M12 11v10"/>
+</svg>Estoque</a>
+<a class="link-menu" href="../transferencia/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4 4-4-4 4-4"/>
+</svg>Transferências</a>
+<a class="link-menu" href="../historico/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/>
+<path d="M3 3v5h5M12 7v5l3 2"/>
+</svg>Histórico</a>
+<a class="link-menu ativo" href="./index.html" aria-current="page">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/>
+</svg>Alertas</a>
+</nav>
+<div class="rodape-menu">
+<div class="perfil-menu">
+<strong>Hospital Central LogMed</strong>
+<span>Administrador</span>
+</div>
+<button class="botao-sair">Sair</button>
+</div>
+</header>
+<main class="conteudo-modulo">
+<div class="limite-modulo">
+<header class="cabecalho-modulo">
+<div>
+<p class="etiqueta-modulo">Central de atenção</p>
+<h1>Alertas</h1>
+<p>Priorize riscos de validade, ruptura de estoque e divergências.</p>
+</div>
+<button class="botao-primario" id="marcar-alertas-vistos">Marcar todos como vistos</button>
+</header>
+<section class="resumo-modulo">
+<article class="cartao-resumo alerta">
+<span>Críticos</span>
+<strong>3</strong>
+</article>
+<article class="cartao-resumo">
+<span>Estoque baixo</span>
+<strong>17</strong>
+</article>
+<article class="cartao-resumo">
+<span>Validade próxima</span>
+<strong>12</strong>
+</article>
+<article class="cartao-resumo">
+<span>Resolvidos hoje</span>
+<strong>9</strong>
+</article>
+</section>
+<div class="grade-dupla">
+<section class="painel-modulo">
+<header class="barra-painel">
+<h2>Alertas ativos</h2>
+<div class="filtros">
+<select class="campo-filtro">
+<option>Todas as prioridades</option>
+<option>Crítica</option>
+<option>Alta</option>
+<option>Moderada</option>
+</select>
+</div>
+</header>
+<ul class="lista-alertas">
+<li class="alerta-card alerta-vermelho">
+<span class="sinal-alerta">!</span>
+<div>
+<span class="rotulo-alerta">Crítico • Validade</span>
+<h3>Contraste Iodado vence em 5 dias</h3>
+<p>Lote CON-0505 • Radiologia • 8 frascos</p>
+</div>
+<button>Revisar</button>
+</li>
+<li class="alerta-card alerta-vermelho">
+<span class="sinal-alerta">!</span>
+<div>
+<span class="rotulo-alerta">Crítico • Estoque</span>
+<h3>Soro fisiológico abaixo do nível mínimo</h3>
+<p>Pronto atendimento • 18 de 40 unidades mínimas</p>
+</div>
+<button>Revisar</button>
+</li>
+<li class="alerta-card alerta-amarelo">
+<span class="sinal-alerta">◷</span>
+<div>
+<span class="rotulo-alerta">Alta • Validade</span>
+<h3>Doze lotes vencem nos próximos 30 dias</h3>
+<p>Distribuídos em quatro setores</p>
+</div>
+<button>Detalhes</button>
+</li>
+<li class="alerta-card alerta-azul">
+<span class="sinal-alerta">⇄</span>
+<div>
+<span class="rotulo-alerta">Moderada • Transferência</span>
+<h3>Divergência na transferência TRF-2841</h3>
+<p>Quantidade recebida diferente da quantidade enviada</p>
+</div>
+<button>Verificar</button>
+</li>
+</ul>
+</section>
+<aside class="painel-modulo cartao-lateral">
+<h2>Distribuição por setor</h2>
+<div class="dado-lateral">
+<span>Farmácia Central</span>
+<strong>8 alertas</strong>
+</div>
+<div class="dado-lateral">
+<span>Pronto atendimento</span>
+<strong>6 alertas</strong>
+</div>
+<div class="dado-lateral">
+<span>UTI</span>
+<strong>4 alertas</strong>
+</div>
+<div class="dado-lateral">
+<span>Radiologia</span>
+<strong>3 alertas</strong>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<script src="../shared/js/operacoes.js"></script>
+</body>
+</html>
+

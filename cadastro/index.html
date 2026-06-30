@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Criação de conta institucional no LogMed." />
+    <title>Criar conta | LogMed</title>
+    <link rel="icon" href="../imagens/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../shared/css/variaveis.css" />
+    <link rel="stylesheet" href="../shared/css/global.css" />
+    <link rel="stylesheet" href="../login/css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <main class="pagina-login pagina-cadastro">
+      <section class="painel-institucional" aria-labelledby="titulo-institucional">
+        <div class="efeito-luz efeito-luz-superior" aria-hidden="true"></div>
+        <div class="efeito-luz efeito-luz-inferior" aria-hidden="true"></div>
+
+        <div class="conteudo-institucional">
+          <img
+            class="logo-institucional"
+            src="../imagens/logo_principal.png"
+            alt="LogMed"
+          />
+
+          <div class="apresentacao apresentacao-cadastro">
+            <span class="etiqueta">Acesso institucional</span>
+            <h1 id="titulo-institucional">
+              Faça parte de uma logística<br />
+              <span>mais segura.</span>
+            </h1>
+            <p class="descricao-institucional">
+              Cadastre a instituição com um e-mail hospitalar autorizado e acesse
+              as ferramentas adequadas à operação.
+            </p>
+
+            <ul class="lista-beneficios">
+              <li>Acesso vinculado à área responsável</li>
+              <li>Dados centralizados e protegidos</li>
+              <li>Operação rastreável desde o primeiro acesso</li>
+            </ul>
+          </div>
+
+          <p class="rodape-institucional">
+            LogMed <span aria-hidden="true">•</span> Inteligência para a logística hospitalar
+          </p>
+        </div>
+      </section>
+
+      <section class="area-formulario area-formulario-cadastro" aria-labelledby="titulo-cadastro">
+        <div class="card-login card-cadastro">
+          <img
+            class="logo-mobile"
+            src="../imagens/logo_principal.png"
+            alt="LogMed"
+          />
+
+          <div class="cabecalho-formulario">
+            <span class="indicador-acesso" aria-hidden="true"></span>
+            <p class="subtitulo-formulario">Novo acesso</p>
+            <h2 id="titulo-cadastro">Crie sua conta</h2>
+            <p>Preencha os dados da instituição para começar.</p>
+          </div>
+
+          <form id="formulario-cadastro" novalidate>
+            <div class="grupo-campo">
+              <label for="nome-instituicao">Nome da instituição</label>
+              <div class="campo-com-icone">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" />
+                </svg>
+                <input
+                  id="nome-instituicao"
+                  name="nome-instituicao"
+                  type="text"
+                  placeholder="Ex.: Hospital Central"
+                  autocomplete="organization"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="grupo-campo">
+              <label for="email">E-mail institucional</label>
+              <div class="campo-com-icone">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 6.5 12 13l9-6.5M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Z" />
+                </svg>
+                <input id="email" name="email" type="email" placeholder="nome@hospital.com.br" autocomplete="email" inputmode="email" required />
+              </div>
+            </div>
+
+            <div class="grupo-campo">
+              <label for="perfil">Área responsável</label>
+              <div class="campo-selecao">
+                <select id="perfil" name="perfil" required>
+                  <option value="">Selecione a área</option>
+                  <option value="almoxarife">Almoxarifado</option>
+                  <option value="enfermeiro">Enfermagem</option>
+                  <option value="auditor">Auditoria</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grade-senhas">
+              <div class="grupo-campo">
+                <label for="senha">Senha</label>
+                <div class="campo-com-icone campo-senha">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="10" width="16" height="11" rx="2" />
+                    <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                  </svg>
+                  <input id="senha" name="senha" type="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" required />
+                  <button class="botao-alternar-senha" type="button" data-alvo="senha" aria-label="Mostrar senha" aria-pressed="false">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="grupo-campo">
+                <label for="confirmacao-senha">Confirmar senha</label>
+                <div class="campo-com-icone campo-senha">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="10" width="16" height="11" rx="2" />
+                    <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                  </svg>
+                  <input id="confirmacao-senha" name="confirmacao-senha" type="password" placeholder="Repita a senha" autocomplete="new-password" required />
+                  <button class="botao-alternar-senha" type="button" data-alvo="confirmacao-senha" aria-label="Mostrar confirmação da senha" aria-pressed="false">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <label class="opcao-lembrar opcao-termos" for="aceitar-termos">
+              <input id="aceitar-termos" name="aceitar-termos" type="checkbox" />
+              <span>Confirmo que os dados informados pertencem à instituição hospitalar.</span>
+            </label>
+
+            <div class="mensagem-formulario" id="mensagem-formulario" role="status" aria-live="polite"></div>
+
+            <button class="botao-entrar" id="botao-cadastrar" type="submit">
+              <span>Criar minha conta</span>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </form>
+
+          <div class="area-criar-conta area-entrar">
+            <span>Já possui uma conta?</span>
+            <a href="../login/index.html">Entrar no sistema</a>
+          </div>
+
+          <p class="aviso-seguranca">
+            <span aria-hidden="true">🔒</span>
+            Cadastro restrito a e-mails hospitalares autorizados.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/cadastro.js"></script>
+  </body>
+</html>

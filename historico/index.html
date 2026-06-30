@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Histórico | LogMed</title>
+<link rel="icon" href="../imagens/favicon.ico">
+<link rel="stylesheet" href="../shared/css/variaveis.css">
+<link rel="stylesheet" href="../shared/css/global.css">
+<link rel="stylesheet" href="../shared/css/sidebar.css">
+<link rel="stylesheet" href="../shared/css/modulos.css">
+</head>
+<body>
+<header class="menu-lateral">
+<div class="marca-menu">
+<img src="../imagens/logo_principal.png" alt="LogMed">
+<div>
+<strong>LogMed</strong>
+<span>Central de Operações</span>
+</div>
+</div>
+<nav class="navegacao-menu" aria-label="Navegação principal">
+<a class="link-menu" href="../dashboard/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<rect x="3" y="3" width="7" height="7" rx="1.5"/>
+<rect x="14" y="3" width="7" height="7" rx="1.5"/>
+<rect x="3" y="14" width="7" height="7" rx="1.5"/>
+<rect x="14" y="14" width="7" height="7" rx="1.5"/>
+</svg>Dashboard</a>
+<a class="link-menu" href="../estoque/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="m4 7 8-4 8 4-8 4-8-4Z"/>
+<path d="m4 7 8 4 8-4v10l-8 4-8-4V7Z"/>
+<path d="M12 11v10"/>
+</svg>Estoque</a>
+<a class="link-menu" href="../transferencia/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4 4-4-4 4-4"/>
+</svg>Transferências</a>
+<a class="link-menu ativo" href="./index.html" aria-current="page">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/>
+<path d="M3 3v5h5M12 7v5l3 2"/>
+</svg>Histórico</a>
+<a class="link-menu" href="../alertas/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/>
+</svg>Alertas</a>
+</nav>
+<div class="rodape-menu">
+<div class="perfil-menu">
+<strong>Hospital Central LogMed</strong>
+<span>Administrador</span>
+</div>
+<button class="botao-sair">Sair</button>
+</div>
+</header>
+<main class="conteudo-modulo">
+<div class="limite-modulo">
+<header class="cabecalho-modulo">
+<div>
+<p class="etiqueta-modulo">Rastreabilidade</p>
+<h1>Histórico</h1>
+<p>Consulte o registro completo de movimentações e alterações do sistema.</p>
+</div>
+<button class="botao-primario" id="exportar-historico">Exportar relatório</button>
+</header>
+<section class="resumo-modulo">
+<article class="cartao-resumo">
+<span>Eventos hoje</span>
+<strong>142</strong>
+</article>
+<article class="cartao-resumo">
+<span>Entradas</span>
+<strong>47</strong>
+</article>
+<article class="cartao-resumo">
+<span>Transferências</span>
+<strong>82</strong>
+</article>
+<article class="cartao-resumo">
+<span>Ajustes manuais</span>
+<strong>13</strong>
+</article>
+</section>
+<section class="painel-modulo">
+<header class="barra-painel">
+<h2>Registro de atividades</h2>
+<div class="filtros">
+<input class="campo-filtro campo-busca" type="search" placeholder="Buscar item, lote ou responsável">
+<input class="campo-filtro" type="date" value="2026-06-30">
+<select class="campo-filtro">
+<option>Todos os eventos</option>
+<option>Entrada</option>
+<option>Transferência</option>
+<option>Ajuste</option>
+<option>Alerta</option>
+</select>
+</div>
+</header>
+<div class="tabela-modulo">
+<table>
+<thead>
+<tr>
+<th>Data e hora</th>
+<th>Evento</th>
+<th>Item</th>
+<th>Origem / destino</th>
+<th>Responsável</th>
+<th>Situação</th>
+</tr>
+</thead>
+<tbody id="corpo-tabela-historico">
+<tr>
+<td>30/06/2026 • 10:32</td>
+<td>Transferência</td>
+<td>Dipirona 500 mg</td>
+<td>Farmácia → UTI</td>
+<td>Ana Lima</td>
+<td>
+<span class="status sucesso">Concluída</span>
+</td>
+</tr>
+<tr>
+<td>30/06/2026 • 09:18</td>
+<td>Cadastro de lote</td>
+<td>Cateter Venoso</td>
+<td>Almoxarifado</td>
+<td>Carlos Mendes</td>
+<td>
+<span class="status info">Registrado</span>
+</td>
+</tr>
+<tr>
+<td>30/06/2026 • 08:45</td>
+<td>Alerta de validade</td>
+<td>Contraste Iodado</td>
+<td>Radiologia</td>
+<td>Sistema</td>
+<td>
+<span class="status critico">Pendente</span>
+</td>
+</tr>
+<tr>
+<td>30/06/2026 • 08:12</td>
+<td>Ajuste de estoque</td>
+<td>Luva cirúrgica M</td>
+<td>Centro Cirúrgico</td>
+<td>Marina Costa</td>
+<td>
+<span class="status atencao">Auditado</span>
+</td>
+</tr>
+<tr>
+<td>29/06/2026 • 17:48</td>
+<td>Entrada</td>
+<td>Soro fisiológico</td>
+<td>Almoxarifado</td>
+<td>Paulo Reis</td>
+<td>
+<span class="status sucesso">Concluída</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<script src="../shared/js/operacoes.js"></script>
+</body>
+</html>
+

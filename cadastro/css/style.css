@@ -1,0 +1,152 @@
+.pagina-cadastro {
+  grid-template-columns: minmax(430px, 0.92fr) minmax(560px, 1.08fr);
+}
+
+.area-formulario-cadastro {
+  padding-block: 32px;
+}
+
+.card-cadastro {
+  width: min(100%, 650px);
+  padding: clamp(30px, 3.4vw, 46px);
+}
+
+.apresentacao-cadastro h1 {
+  font-size: clamp(2.5rem, 3.8vw, 4.2rem);
+}
+
+.grade-senhas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.card-cadastro .botao-entrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 54px;
+}
+
+.card-cadastro .botao-entrar svg {
+  flex: 0 0 19px;
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.card-cadastro .campo-senha input {
+  padding-right: 48px;
+}
+
+.card-cadastro .botao-alternar-senha {
+  position: absolute;
+  right: 10px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  color: #789097;
+  cursor: pointer;
+  border-radius: 8px;
+  background: transparent;
+  place-items: center;
+}
+
+.card-cadastro .botao-alternar-senha:hover {
+  color: var(--cor-primaria-escura);
+  background: rgba(0, 184, 200, 0.08);
+}
+
+.card-cadastro .botao-alternar-senha svg {
+  position: static;
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.campo-selecao select {
+  width: 100%;
+  height: 52px;
+  padding: 0 42px 0 15px;
+  color: var(--cor-texto);
+  font: inherit;
+  font-size: 0.9rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pequeno);
+  outline: none;
+  background: #fbfdfe;
+  cursor: pointer;
+  transition: border-color var(--transicao-padrao), box-shadow var(--transicao-padrao);
+}
+
+.campo-selecao select:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 4px rgba(8, 184, 200, 0.1);
+}
+
+.campo-selecao.campo-invalido select {
+  border-color: var(--cor-erro);
+  box-shadow: 0 0 0 4px rgba(217, 54, 79, 0.08);
+}
+
+.opcao-termos {
+  align-items: flex-start;
+  line-height: 1.45;
+}
+
+.opcao-termos input {
+  flex: 0 0 17px;
+  margin-top: 2px;
+}
+
+.area-entrar {
+  margin-top: 22px;
+}
+
+@media (max-width: 1100px) {
+  .pagina-cadastro {
+    grid-template-columns: minmax(390px, 0.82fr) minmax(520px, 1.18fr);
+  }
+
+  .card-cadastro {
+    padding-inline: 34px;
+  }
+
+  .grade-senhas {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (max-width: 899px) {
+  .pagina-cadastro {
+    display: block;
+  }
+
+  .area-formulario-cadastro {
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .area-formulario-cadastro {
+    padding: 16px 12px;
+  }
+
+  .card-cadastro {
+    padding: 28px 20px;
+  }
+
+  .area-entrar {
+    flex-direction: column;
+    gap: 2px;
+  }
+}

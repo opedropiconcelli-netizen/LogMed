@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Central de Operações | LogMed</title>
+<link rel="icon" href="../imagens/favicon.ico">
+<link rel="stylesheet" href="../shared/css/variaveis.css">
+<link rel="stylesheet" href="../shared/css/global.css">
+<link rel="stylesheet" href="../shared/css/sidebar.css">
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<header class="menu-lateral">
+<div class="marca-menu">
+<img src="../imagens/logo_principal.png" alt="LogMed">
+<div>
+<strong>LogMed</strong>
+<span>Central de Operações</span>
+</div>
+</div>
+<nav class="navegacao-menu" aria-label="Navegação principal">
+  <a class="link-menu ativo" href="./index.html" aria-current="page">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<rect x="3" y="3" width="7" height="7" rx="1.5"/>
+<rect x="14" y="3" width="7" height="7" rx="1.5"/>
+<rect x="3" y="14" width="7" height="7" rx="1.5"/>
+<rect x="14" y="14" width="7" height="7" rx="1.5"/>
+</svg>Dashboard</a>
+  <a class="link-menu" href="../estoque/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="m4 7 8-4 8 4-8 4-8-4Z"/>
+<path d="m4 7 8 4 8-4v10l-8 4-8-4V7Z"/>
+<path d="M12 11v10"/>
+</svg>Estoque</a>
+  <a class="link-menu" href="../transferencia/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4 4-4-4 4-4"/>
+</svg>Transferências</a>
+  <a class="link-menu" href="../historico/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/>
+<path d="M3 3v5h5M12 7v5l3 2"/>
+</svg>Histórico</a>
+  <a class="link-menu" href="../alertas/index.html">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/>
+</svg>Alertas</a>
+</nav>
+<div class="rodape-menu">
+<div class="perfil-menu">
+<strong>Hospital Central LogMed</strong>
+<span>Administrador</span>
+</div>
+<button class="botao-sair" type="button">Sair</button>
+</div>
+</header>
+<main class="conteudo-dashboard">
+  <section class="boas-vindas-dashboard">
+<div>
+<p class="etiqueta-pagina">Terça-feira, 30 de junho</p>
+<h1>Bom dia, Administração</h1>
+<p>Veja o que precisa da sua atenção no Hospital Central LogMed.</p>
+</div>
+<a class="botao-movimentacao" href="../transferencia/index.html?nova=1">+ Nova movimentação</a>
+</section>
+  <section class="grade-indicadores" aria-label="Indicadores logísticos">
+<article class="card-indicador">
+<i>▣</i>
+<div>
+<p>Insumos em estoque</p>
+<strong>1.248</strong>
+</div>
+<span class="positivo">Estável</span>
+</article>
+<article class="card-indicador">
+<i class="validade">◷</i>
+<div>
+<p>Próximos do vencimento</p>
+<strong>12</strong>
+</div>
+<span class="atencao">Atenção</span>
+</article>
+<article class="card-indicador">
+<i>⇄</i>
+<div>
+<p>Transferências hoje</p>
+<strong>28</strong>
+</div>
+<span class="positivo">+8%</span>
+</article>
+<article class="card-indicador critico">
+<i>!</i>
+<div>
+<p>Alertas críticos</p>
+<strong>3</strong>
+</div>
+<span>Urgente</span>
+</article>
+</section>
+  <div class="grade-operacional">
+<section class="painel painel-movimentacoes">
+<header>
+<div>
+<p class="etiqueta-pagina">Fluxo logístico</p>
+<h2>Movimentações recentes</h2>
+</div>
+<a href="../historico/index.html">Ver histórico</a>
+</header>
+<ol class="linha-do-tempo">
+<li>
+<b>⇄</b>
+<div>
+<h3>Dipirona 500 mg transferida para a UTI</h3>
+<p>Farmácia Central → UTI • 10:32</p>
+</div>
+</li>
+<li>
+<b class="cadastro">+</b>
+<div>
+<h3>Novo lote de Cateter Venoso cadastrado</h3>
+<p>Entrada de estoque • 09:18</p>
+</div>
+</li>
+<li>
+<b class="aviso">!</b>
+<div>
+<h3>Contraste Iodado vence em 5 dias</h3>
+<p>Alerta automático • 08:45</p>
+</div>
+</li>
+</ol>
+</section>
+  <aside class="painel painel-alertas">
+<header>
+<p class="etiqueta-pagina">Prioridade</p>
+<h2>Alertas que exigem ação</h2>
+</header>
+<article class="alerta-item vermelho">
+<b>3</b>
+<div>
+<strong>Alertas críticos</strong>
+<span>Atendimento imediato</span>
+</div>
+</article>
+<article class="alerta-item amarelo">
+<b>12</b>
+<div>
+<strong>Lotes a vencer</strong>
+<span>Próximos 30 dias</span>
+</div>
+</article>
+<a href="../alertas/index.html">Revisar todos os alertas →</a>
+</aside>
+</div>
+  <section class="painel painel-estoque">
+<header>
+<div>
+<p class="etiqueta-pagina">Monitoramento</p>
+<h2>Estoque crítico por setor</h2>
+</div>
+<a href="../estoque/index.html">Abrir estoque</a>
+</header>
+<div class="tabela-responsiva">
+<table>
+<thead>
+<tr>
+<th>Insumo</th>
+<th>Setor</th>
+<th>Quantidade</th>
+<th>Mínimo</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Soro fisiológico 500 ml</td>
+<td>Pronto atendimento</td>
+<td>18 un.</td>
+<td>40 un.</td>
+<td>
+<span class="status critico">Crítico</span>
+</td>
+</tr>
+<tr>
+<td>Luva cirúrgica M</td>
+<td>Centro cirúrgico</td>
+<td>52 cx.</td>
+<td>70 cx.</td>
+<td>
+<span class="status atencao">Baixo</span>
+</td>
+</tr>
+<tr>
+<td>Cateter periférico 22G</td>
+<td>UTI</td>
+<td>31 un.</td>
+<td>35 un.</td>
+<td>
+<span class="status observacao">Monitorar</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<script src="../shared/js/operacoes.js"></script>
+</body>
+</html>
+
