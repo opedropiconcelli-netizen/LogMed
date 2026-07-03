@@ -1,0 +1,26 @@
+DROP POLICY IF EXISTS "Apenas admins autenticados inserem alas" ON alas;
+DROP POLICY IF EXISTS "Apenas admins autenticados alteram insumos" ON insumos;
+
+CREATE POLICY "Apenas admins autenticados inserem alas" 
+ON public.alas 
+FOR INSERT 
+TO authenticated 
+WITH CHECK (
+    EXISTS (
+        SELECT 1 FROM public.perfis_usuarios p
+        WHERE p.id = auth.uid()
+          AND p.classe_acesso = 'administrador'
+    )
+);
+
+CREATE POLICY "Apenas admins autenticados alteram insumos" 
+ON public.insumos 
+FOR INSERT 
+TO authenticated 
+WITH CHECK (
+    EXISTS (
+        SELECT 1 FROM public.perfis_usuarios p
+        WHERE p.id = auth.uid()
+          AND p.classe_acesso = 'administrador'
+    )
+);
