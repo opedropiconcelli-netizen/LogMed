@@ -1,0 +1,11 @@
+CREATE TYPE enum_classe_acesso AS ENUM ('enfermeiro', 'medico', 'administrador');
+
+CREATE TABLE public.perfis_usuarios (
+    id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+    nome_exibicao VARCHAR(150) NOT NULL,
+    classe_acesso enum_classe_acesso NOT NULL DEFAULT 'enfermeiro',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    
+    PRIMARY KEY (id)
+);
