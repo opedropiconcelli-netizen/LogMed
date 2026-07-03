@@ -68,34 +68,34 @@
 <article class="card-indicador">
 <i>▣</i>
 <div>
-<p>Alas disponíveis</p>
-<strong id="total-alas">—</strong>
+<p>Insumos em estoque</p>
+<strong>1.248</strong>
 </div>
-<span class="positivo">API</span>
+<span class="positivo">Estável</span>
 </article>
 <article class="card-indicador">
 <i class="validade">◷</i>
 <div>
-<p>Insumos cadastrados</p>
-<strong id="total-insumos">—</strong>
+<p>Próximos do vencimento</p>
+<strong>12</strong>
 </div>
-<span class="positivo">API</span>
+<span class="atencao">Atenção</span>
 </article>
 <article class="card-indicador">
 <i>⇄</i>
 <div>
-<p>Insumos normais</p>
-<strong id="total-normais-dashboard">—</strong>
+<p>Transferências hoje</p>
+<strong>28</strong>
 </div>
-<span class="positivo">Estável</span>
+<span class="positivo">+8%</span>
 </article>
 <article class="card-indicador critico">
 <i>!</i>
 <div>
-<p>Insumos críticos</p>
-<strong id="total-criticos-dashboard">—</strong>
+<p>Alertas críticos</p>
+<strong>3</strong>
 </div>
-<span>Atenção</span>
+<span>Urgente</span>
 </article>
 </section>
   <div class="grade-operacional">
@@ -157,7 +157,7 @@
 <header>
 <div>
 <p class="etiqueta-pagina">Monitoramento</p>
-<h2>Visão rápida do estoque</h2>
+<h2>Estoque crítico por setor</h2>
 </div>
 <a href="../estoque/index.html">Abrir estoque</a>
 </header>
@@ -165,23 +165,46 @@
 <table>
 <thead>
 <tr>
-<th>Nome</th>
-<th>Código</th>
+<th>Insumo</th>
+<th>Setor</th>
 <th>Quantidade</th>
-<th>Ala</th>
-<th>Validade</th>
+<th>Mínimo</th>
 <th>Status</th>
 </tr>
 </thead>
-<tbody id="corpo-visao-estoque">
-<tr><td colspan="6" class="estado-dados">Carregando dados logísticos...</td></tr>
+<tbody>
+<tr>
+<td>Soro fisiológico 500 ml</td>
+<td>Pronto atendimento</td>
+<td>18 un.</td>
+<td>40 un.</td>
+<td>
+<span class="status critico">Crítico</span>
+</td>
+</tr>
+<tr>
+<td>Luva cirúrgica M</td>
+<td>Centro cirúrgico</td>
+<td>52 cx.</td>
+<td>70 cx.</td>
+<td>
+<span class="status atencao">Baixo</span>
+</td>
+</tr>
+<tr>
+<td>Cateter periférico 22G</td>
+<td>UTI</td>
+<td>31 un.</td>
+<td>35 un.</td>
+<td>
+<span class="status observacao">Monitorar</span>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </section>
 </main>
-<script src="../shared/js/api.js" defer></script>
-<script src="./js/dashboard.js" defer></script>
+<script src="../shared/js/operacoes.js"></script>
 </body>
 </html>
-

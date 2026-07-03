@@ -1,0 +1,34 @@
+.menu-lateral {
+  position: fixed;
+  z-index: 20;
+  inset: 0 0 auto;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 32px;
+  min-height: 76px;
+  padding: 11px clamp(20px, 4vw, 64px);
+  color: #143943;
+  border-bottom: 1px solid var(--cor-borda);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 30px rgba(21, 67, 73, 0.07);
+  backdrop-filter: blur(16px);
+}
+.marca-menu { display: flex; align-items: center; gap: 11px; }
+.marca-menu img { width: 48px; height: 48px; object-fit: cover; border: 1px solid var(--cor-borda); border-radius: 13px; }
+.marca-menu strong,.marca-menu span { display: block; }
+.marca-menu strong { font-size: 1.15rem; line-height: 1.1; }
+.marca-menu span { margin-top: 3px; color: var(--cor-texto-suave); font-size: .67rem; }
+.navegacao-menu { display: flex; justify-content: center; gap: 5px; min-width: 0; }
+.link-menu { display: flex; align-items: center; gap: 7px; padding: 10px 13px; color: var(--cor-texto-suave); font-size: .82rem; font-weight: 650; text-decoration: none; border-radius: 9px; white-space: nowrap; transition: .16s ease; }
+.link-menu svg { flex: 0 0 18px; width: 18px; height: 18px; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+.link-menu:hover { color: var(--cor-primaria-escura); background: rgba(0,184,200,.07); }
+.link-menu.ativo { color: #fff; background: #0b7f8b; box-shadow: 0 7px 16px rgba(0,125,138,.18); }
+.rodape-menu { display: flex; align-items: center; gap: 10px; }
+.perfil-menu { padding-right: 12px; text-align: right; border-right: 1px solid var(--cor-borda); }
+.perfil-menu strong,.perfil-menu span { display: block; }
+.perfil-menu strong { max-width: 150px; overflow: hidden; font-size: .76rem; text-overflow: ellipsis; white-space: nowrap; }
+.perfil-menu span { color: var(--cor-texto-suave); font-size: .68rem; }
+.botao-sair { padding: 8px 10px; color: var(--cor-texto-suave); font-size: .75rem; font-weight: 700; cursor: pointer; border-radius: 8px; background: #f2f6f7; }
+@media(max-width:980px){.menu-lateral{position:relative;grid-template-columns:1fr auto;gap:10px;padding:12px 18px}.navegacao-menu{grid-column:1/-1;justify-content:flex-start;margin:0 -18px;padding:2px 18px 4px;overflow-x:auto}.perfil-menu{display:none}}
+@media(max-width:480px){.marca-menu span{display:none}.link-menu{padding:9px 11px}.botao-sair{display:none}}

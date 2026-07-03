@@ -1,0 +1,8 @@
+*,*::before,*::after{box-sizing:border-box}
+html{min-height:100%;font-size:16px}
+body,h1,h2,h3,p,ul,ol{margin:0}
+body{min-height:100vh;color:var(--cor-texto);font-family:Inter,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;background:var(--cor-fundo);-webkit-font-smoothing:antialiased}
+button,input{min-width:0;color:inherit;font:inherit}
+button{border:0} input{border:1px solid var(--cor-borda)} a{color:inherit} img,svg{display:block;max-width:100%}
+:focus-visible{outline:3px solid rgba(0,184,200,.28);outline-offset:3px}
+::selection{color:#fff;background:var(--cor-primaria-escura)}
