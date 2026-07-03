@@ -1,0 +1,23 @@
+ALTER TABLE public.lotes ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.lotes_dados_semana2 ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Qualquer funcionário autenticado pode ver os lotes"
+ON public.lotes FOR SELECT TO authenticated USING (true);
+
+CREATE POLICY "Qualquer funcionário autenticado pode criar um lote"
+ON public.lotes FOR INSERT TO authenticated WITH CHECK (auth.uid() = criador_id);
+
+CREATE POLICY "Todo o corpo clínico autenticado pode visualizar os dados da Semana 2"
+ON public.lotes_dados_semana2 FOR SELECT TO authenticated USING (true);
+
+CREATE POLICY "Apenas médicos e administradores podem gerenciar dados da Semana 2"
+ON public.lotes_dados_semana2 
+FOR ALL 
+TO authenticated
+USING (
+    EXISTS (
+        SELECT 1 FROM public.perfis_usuarios p
+        WHERE p.id = auth.uid()
+          AND p.classe_acesso IN ('medico', 'administrador')
+    )
+);
