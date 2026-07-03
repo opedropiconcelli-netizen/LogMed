@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS public.lotes_dados_semana2;
+DROP TABLE IF EXISTS public.lotes;
+DROP TYPE IF EXISTS enum_status_lote;
+
+CREATE TYPE enum_status_lote AS ENUM (
+    'criado', 
+    'em_processamento_s1', 
+    'aguardando_semana2', 
+    'concluido'
+);
+
+CREATE TABLE public.lotes (
+    id BIGSERIAL PRIMARY KEY,
+    ala_id INT NOT NULL REFERENCES public.alas(id) ON DELETE RESTRICT,
+    criador_id UUID NOT NULL REFERENCES public.perfis_usuarios(id) ON DELETE RESTRICT,
+    status_atual enum_status_lote NOT NULL DEFAULT 'criado',
+    metadata_auditoria JSONB DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE public.lotes_dados_semana2 (
+    lote_id BIGINT PRIMARY KEY REFERENCES public.lotes(id) ON DELETE CASCADE,
+    responsavel_validacao_id UUID REFERENCES public.perfis_usuarios(id) ON DELETE SET NULL,
+    metricas_insumos_checados INT NOT NULL CHECK (metricas_insumos_checados >= 0),
+    observacoes_clinicas TEXT,
+    processado_em TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
