@@ -1,0 +1,3 @@
+.estado-tabela{padding:30px 24px;color:var(--cor-texto-suave);text-align:center}
+.estado-tabela.erro{color:var(--cor-erro);background:#fff7f7}
+.codigo-insumo{color:var(--cor-primaria-escura);font-weight:750;white-space:nowrap}

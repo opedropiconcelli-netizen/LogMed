@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../shared/css/global.css">
 <link rel="stylesheet" href="../shared/css/sidebar.css">
 <link rel="stylesheet" href="../shared/css/modulos.css">
+<link rel="stylesheet" href="./css/estoque.css">
 </head>
 <body>
 <header class="menu-lateral">
@@ -63,24 +64,24 @@
 <h1>Estoque</h1>
 <p>Acompanhe lotes, quantidades e validade dos insumos hospitalares.</p>
 </div>
-<button class="botao-primario" id="abrir-cadastro-insumo">+ Cadastrar insumo</button>
+<button class="botao-primario" id="atualizar-estoque" type="button">Atualizar dados</button>
 </header>
 <section class="resumo-modulo">
 <article class="cartao-resumo">
 <span>Total de itens</span>
-<strong id="total-itens">1.248</strong>
+<strong id="total-itens">—</strong>
 </article>
 <article class="cartao-resumo">
-<span>Lotes ativos</span>
-<strong>386</strong>
+<span>Alas com insumos</span>
+<strong id="total-alas-estoque">—</strong>
 </article>
 <article class="cartao-resumo">
-<span>Estoque baixo</span>
-<strong>17</strong>
+<span>Itens normais</span>
+<strong id="total-normais">—</strong>
 </article>
 <article class="cartao-resumo alerta">
 <span>Itens críticos</span>
-<strong>3</strong>
+<strong id="total-criticos">—</strong>
 </article>
 </section>
 <section class="painel-modulo">
@@ -88,17 +89,13 @@
 <h2>Insumos cadastrados</h2>
 <div class="filtros">
 <input class="campo-filtro campo-busca" type="search" placeholder="Buscar insumo ou lote">
-<select class="campo-filtro">
-<option>Todos os setores</option>
-<option>Farmácia Central</option>
-<option>UTI</option>
-<option>Centro Cirúrgico</option>
+<select class="campo-filtro" id="filtro-ala">
+<option value="">Todos os setores</option>
 </select>
-<select class="campo-filtro">
-<option>Todos os status</option>
-<option>Normal</option>
-<option>Baixo</option>
-<option>Crítico</option>
+<select class="campo-filtro" id="filtro-status">
+<option value="">Todos os status</option>
+<option value="normal">Normal</option>
+<option value="critico">Crítico</option>
 </select>
 </div>
 </header>
@@ -106,72 +103,24 @@
 <table>
 <thead>
 <tr>
+<th>Código</th>
 <th>Insumo</th>
-<th>Lote</th>
-<th>Setor</th>
-<th>Validade</th>
 <th>Quantidade</th>
+<th>Localização</th>
+<th>Validade</th>
 <th>Status</th>
 </tr>
 </thead>
 <tbody id="corpo-tabela-estoque">
-<tr>
-<td>Dipirona 500 mg</td>
-<td>DIP-2406</td>
-<td>Farmácia Central</td>
-<td>18/12/2027</td>
-<td>420 un.</td>
-<td>
-<span class="status sucesso">Normal</span>
-</td>
-</tr>
-<tr>
-<td>Soro fisiológico 500 ml</td>
-<td>SOR-1182</td>
-<td>Pronto atendimento</td>
-<td>08/09/2027</td>
-<td>18 un.</td>
-<td>
-<span class="status critico">Crítico</span>
-</td>
-</tr>
-<tr>
-<td>Luva cirúrgica M</td>
-<td>LUV-0921</td>
-<td>Centro Cirúrgico</td>
-<td>22/03/2028</td>
-<td>52 cx.</td>
-<td>
-<span class="status atencao">Baixo</span>
-</td>
-</tr>
-<tr>
-<td>Cateter periférico 22G</td>
-<td>CAT-4410</td>
-<td>UTI</td>
-<td>14/01/2028</td>
-<td>31 un.</td>
-<td>
-<span class="status info">Monitorar</span>
-</td>
-</tr>
-<tr>
-<td>Contraste Iodado</td>
-<td>CON-0505</td>
-<td>Radiologia</td>
-<td>05/07/2026</td>
-<td>8 fr.</td>
-<td>
-<span class="status critico">Vencimento</span>
-</td>
-</tr>
+<tr><td colspan="6" class="estado-tabela">Carregando dados logísticos...</td></tr>
 </tbody>
 </table>
 </div>
 </section>
 </div>
 </main>
-<script src="../shared/js/operacoes.js"></script>
+<script src="../shared/js/api.js" defer></script>
+<script src="./js/estoque.js" defer></script>
 </body>
 </html>
 

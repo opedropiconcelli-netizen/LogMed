@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../shared/css/global.css">
 <link rel="stylesheet" href="../shared/css/sidebar.css">
 <link rel="stylesheet" href="../shared/css/modulos.css">
+<link rel="stylesheet" href="./css/transferencia.css">
 </head>
 <body>
 <header class="menu-lateral">
@@ -86,74 +87,37 @@
 <div class="grade-dupla">
 <section class="painel-modulo">
 <header class="barra-painel">
-<h2>Transferências recentes</h2>
-<div class="filtros">
-<select class="campo-filtro">
-<option>Todos os status</option>
-<option>Concluída</option>
-<option>Em trânsito</option>
-<option>Pendente</option>
-</select>
-</div>
+<h2>Registrar transferência</h2>
 </header>
-<ul class="lista-operacional" id="lista-transferencias">
-<li>
-<span class="icone-lista">⇄</span>
-<div>
-<h3>Dipirona 500 mg • 40 unidades</h3>
-<p>Farmácia Central → UTI • Responsável: Ana Lima</p>
-</div>
-<time>10:32</time>
-</li>
-<li>
-<span class="icone-lista">⇄</span>
-<div>
-<h3>Soro fisiológico • 25 unidades</h3>
-<p>Almoxarifado → Pronto atendimento • Em trânsito</p>
-</div>
-<time>10:05</time>
-</li>
-<li>
-<span class="icone-lista">⇄</span>
-<div>
-<h3>Luva cirúrgica M • 12 caixas</h3>
-<p>Almoxarifado → Centro Cirúrgico • Concluída</p>
-</div>
-<time>09:41</time>
-</li>
-<li>
-<span class="icone-lista">!</span>
-<div>
-<h3>Cateter periférico 22G • 10 unidades</h3>
-<p>Farmácia Central → Enfermaria B • Divergência reportada</p>
-</div>
-<time>08:56</time>
-</li>
-</ul>
+<form class="formulario-transferencia" id="formulario-transferencia">
+<div class="campo-transferencia"><label for="ala-origem">Ala de origem</label><select id="ala-origem" name="ala_origem" required disabled><option value="">Carregando alas...</option></select></div>
+<div class="campo-transferencia"><label for="ala-destino">Ala de destino</label><select id="ala-destino" name="ala_destino" required disabled><option value="">Carregando alas...</option></select></div>
+<div class="campo-transferencia largo"><label for="insumo-transferencia">Insumo</label><select id="insumo-transferencia" name="insumo" required disabled><option value="">Carregando insumos...</option></select></div>
+<div class="campo-transferencia"><label for="quantidade-transferencia">Quantidade</label><input id="quantidade-transferencia" name="quantidade" type="number" min="1" step="1" required></div>
+<div class="acoes-transferencia"><button class="botao-primario" type="submit" disabled>Registrar transferência</button></div>
+<p class="mensagem-transferencia" id="mensagem-transferencia" role="status" aria-live="polite">Carregando dados logísticos...</p>
+</form>
 </section>
 <aside class="painel-modulo cartao-lateral">
-<h2>Resumo da operação</h2>
+<h2>Como funciona</h2>
 <div class="dado-lateral">
-<span>Setor com mais envios</span>
-<strong>Farmácia Central</strong>
+<span>1. Selecione</span>
+<strong>As alas e o insumo</strong>
 </div>
 <div class="dado-lateral">
-<span>Setor com mais recebimentos</span>
-<strong>UTI</strong>
+<span>2. Informe</span>
+<strong>A quantidade movimentada</strong>
 </div>
 <div class="dado-lateral">
-<span>Tempo médio de aceite</span>
-<strong>12 minutos</strong>
-</div>
-<div class="dado-lateral">
-<span>Taxa de conclusão</span>
-<strong>96,4%</strong>
+<span>3. Valide</span>
+<strong>Origem e destino devem ser diferentes</strong>
 </div>
 </aside>
 </div>
 </div>
 </main>
-<script src="../shared/js/operacoes.js"></script>
+<script src="../shared/js/api.js" defer></script>
+<script src="./js/transferencia.js" defer></script>
 </body>
 </html>
 
