@@ -68,19 +68,19 @@
 <section class="resumo-modulo">
 <article class="cartao-resumo">
 <span>Realizadas hoje</span>
-<strong>28</strong>
+<strong id="transferencias-hoje">—</strong>
 </article>
 <article class="cartao-resumo">
 <span>Em trânsito</span>
-<strong>6</strong>
+<strong>—</strong>
 </article>
 <article class="cartao-resumo">
 <span>Aguardando aceite</span>
-<strong>4</strong>
+<strong>—</strong>
 </article>
 <article class="cartao-resumo alerta">
 <span>Com divergência</span>
-<strong>1</strong>
+<strong>—</strong>
 </article>
 </section>
 <div class="grade-dupla">
@@ -97,62 +97,34 @@
 </div>
 </header>
 <ul class="lista-operacional" id="lista-transferencias">
-<li>
-<span class="icone-lista">⇄</span>
-<div>
-<h3>Dipirona 500 mg • 40 unidades</h3>
-<p>Farmácia Central → UTI • Responsável: Ana Lima</p>
-</div>
-<time>10:32</time>
-</li>
-<li>
-<span class="icone-lista">⇄</span>
-<div>
-<h3>Soro fisiológico • 25 unidades</h3>
-<p>Almoxarifado → Pronto atendimento • Em trânsito</p>
-</div>
-<time>10:05</time>
-</li>
-<li>
-<span class="icone-lista">⇄</span>
-<div>
-<h3>Luva cirúrgica M • 12 caixas</h3>
-<p>Almoxarifado → Centro Cirúrgico • Concluída</p>
-</div>
-<time>09:41</time>
-</li>
-<li>
-<span class="icone-lista">!</span>
-<div>
-<h3>Cateter periférico 22G • 10 unidades</h3>
-<p>Farmácia Central → Enfermaria B • Divergência reportada</p>
-</div>
-<time>08:56</time>
-</li>
+<li class="estado-integracao informacao">Carregando alas e insumos...</li>
 </ul>
 </section>
 <aside class="painel-modulo cartao-lateral">
 <h2>Resumo da operação</h2>
 <div class="dado-lateral">
 <span>Setor com mais envios</span>
-<strong>Farmácia Central</strong>
+<strong>—</strong>
 </div>
 <div class="dado-lateral">
 <span>Setor com mais recebimentos</span>
-<strong>UTI</strong>
+<strong>—</strong>
 </div>
 <div class="dado-lateral">
 <span>Tempo médio de aceite</span>
-<strong>12 minutos</strong>
+<strong>—</strong>
 </div>
 <div class="dado-lateral">
 <span>Taxa de conclusão</span>
-<strong>96,4%</strong>
+<strong>—</strong>
 </div>
 </aside>
 </div>
 </div>
 </main>
-<script src="../shared/js/operacoes.js"></script>
+<script src="../shared/js/config-api.js" defer></script>
+<script src="../shared/js/api.js" defer></script>
+<script src="../shared/js/auth.js" defer></script>
+<script src="./js/transferencia.js" defer></script>
 </body>
 </html>

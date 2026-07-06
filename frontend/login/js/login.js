@@ -1,164 +1,112 @@
-const formularioLogin = document.querySelector("#formulario-login");
-const campoUsuario = document.querySelector("#usuario");
-const campoSenha = document.querySelector("#senha");
-const campoLembrarAcesso = document.querySelector("#lembrar-acesso");
-const botaoAlternarSenha = document.querySelector("#botao-alternar-senha");
-const botaoEntrar = document.querySelector("#botao-entrar");
-const mensagemFormulario = document.querySelector("#mensagem-formulario");
-const linkRecuperarSenha = document.querySelector("#link-recuperar-senha");
+(function iniciarLogin() {
+  const formularioLogin = document.querySelector("#formulario-login");
+  const campoUsuario = document.querySelector("#usuario");
+  const campoSenha = document.querySelector("#senha");
+  const botaoAlternarSenha = document.querySelector("#botao-alternar-senha");
+  const botaoEntrar = document.querySelector("#botao-entrar");
+  const textoBotao = botaoEntrar.querySelector("span");
+  const mensagemFormulario = document.querySelector("#mensagem-formulario");
+  const linkRecuperarSenha = document.querySelector("#link-recuperar-senha");
 
-const dominiosHospitalaresPermitidos = ["hospital.com.br"];
+  const destinosPorPerfil = {
+    almoxarife: "../cadastro/index.html",
+    enfermeiro: "../transferencia/index.html",
+    auditor: "../alertas/index.html",
+  };
 
-const destinosPorPerfil = {
-  administrador: "../dashboard/index.html",
-  almoxarife: "../estoque/index.html",
-  enfermeiro: "../transferencia/index.html",
-  auditor: "../alertas/index.html",
-};
+  function exibirMensagem(texto, tipo) {
+    mensagemFormulario.textContent = texto;
+    mensagemFormulario.className = `mensagem-formulario visivel ${tipo}`;
+  }
 
-const usuariosDeTeste = {
-  "admin@hospital.com.br": {
-    senha: "Admin@123",
-    perfil: "administrador",
-    hospital: "Hospital Central LogMed",
-  },
-  "almoxarife@hospital.com.br": { senha: "123456", perfil: "almoxarife" },
-  "enfermeiro@hospital.com.br": { senha: "123456", perfil: "enfermeiro" },
-  "auditor@hospital.com.br": { senha: "123456", perfil: "auditor" },
-};
+  function limparValidacao() {
+    campoUsuario.closest(".campo-com-icone")?.classList.remove("campo-invalido");
+    campoSenha.closest(".campo-com-icone")?.classList.remove("campo-invalido");
+    mensagemFormulario.className = "mensagem-formulario";
+    mensagemFormulario.textContent = "";
+  }
 
-function exibirMensagem(texto, tipo) {
-  mensagemFormulario.textContent = texto;
-  mensagemFormulario.className = `mensagem-formulario visivel ${tipo}`;
-}
+  function marcarCampoInvalido(campo) {
+    campo.closest(".campo-com-icone")?.classList.add("campo-invalido");
+  }
 
-function limparValidacao() {
-  campoUsuario.closest(".campo-com-icone").classList.remove("campo-invalido");
-  campoSenha.closest(".campo-com-icone").classList.remove("campo-invalido");
-  mensagemFormulario.className = "mensagem-formulario";
-  mensagemFormulario.textContent = "";
-}
+  function alterarEstadoEnvio(enviando) {
+    botaoEntrar.disabled = enviando;
+    campoUsuario.disabled = enviando;
+    campoSenha.disabled = enviando;
+    textoBotao.textContent = enviando ? "Autenticando..." : "Entrar no sistema";
+  }
 
-function marcarCampoInvalido(campo) {
-  campo.closest(".campo-com-icone").classList.add("campo-invalido");
-}
-
-function emailHospitalarValido(email) {
-  const formatoDeEmailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const partesDoEmail = email.split("@");
-
-  return (
-    formatoDeEmailValido.test(email) &&
-    partesDoEmail.length === 2 &&
-    dominiosHospitalaresPermitidos.includes(partesDoEmail[1])
-  );
-}
-
-async function gerarHash(texto) {
-  const dados = new TextEncoder().encode(texto);
-  const hash = await crypto.subtle.digest("SHA-256", dados);
-
-  return Array.from(new Uint8Array(hash))
-    .map((byte) => byte.toString(16).padStart(2, "0"))
-    .join("");
-}
-
-function buscarContaCadastrada(email) {
-  const contas = JSON.parse(localStorage.getItem("usuariosCadastrados") || "[]");
-  return contas.find((conta) => conta.email === email);
-}
-
-// Alterna a visibilidade da senha mantendo o foco no campo.
-botaoAlternarSenha.addEventListener("click", () => {
-  const senhaEstaVisivel = campoSenha.type === "text";
-
-  campoSenha.type = senhaEstaVisivel ? "password" : "text";
-  botaoAlternarSenha.setAttribute("aria-label", senhaEstaVisivel ? "Mostrar senha" : "Ocultar senha");
-  botaoAlternarSenha.setAttribute("aria-pressed", String(!senhaEstaVisivel));
-  campoSenha.focus();
-});
-
-[campoUsuario, campoSenha].forEach((campo) => {
-  campo.addEventListener("input", () => {
-    campo.closest(".campo-com-icone").classList.remove("campo-invalido");
+  botaoAlternarSenha.addEventListener("click", () => {
+    const senhaEstaVisivel = campoSenha.type === "text";
+    campoSenha.type = senhaEstaVisivel ? "password" : "text";
+    botaoAlternarSenha.setAttribute("aria-label", senhaEstaVisivel ? "Mostrar senha" : "Ocultar senha");
+    botaoAlternarSenha.setAttribute("aria-pressed", String(!senhaEstaVisivel));
+    campoSenha.focus();
   });
-});
 
-linkRecuperarSenha.addEventListener("click", (evento) => {
-  evento.preventDefault();
-  exibirMensagem("A recuperação de senha estará disponível em breve.", "informacao");
-});
+  [campoUsuario, campoSenha].forEach((campo) => {
+    campo.addEventListener("input", () => {
+      campo.closest(".campo-com-icone")?.classList.remove("campo-invalido");
+    });
+  });
 
-formularioLogin.addEventListener("submit", async (evento) => {
-  evento.preventDefault();
-  limparValidacao();
+  linkRecuperarSenha.addEventListener("click", (evento) => {
+    evento.preventDefault();
+    exibirMensagem("A recuperação de senha deverá ser disponibilizada pelo back-end.", "informacao");
+  });
 
-  const usuario = campoUsuario.value.trim().toLocaleLowerCase("pt-BR");
-  const senha = campoSenha.value;
+  formularioLogin.addEventListener("submit", async (evento) => {
+    evento.preventDefault();
+    limparValidacao();
 
-  if (!usuario || !senha) {
-    if (!usuario) marcarCampoInvalido(campoUsuario);
-    if (!senha) marcarCampoInvalido(campoSenha);
-    exibirMensagem("Preencha o e-mail institucional e a senha para continuar.", "erro");
-    (!usuario ? campoUsuario : campoSenha).focus();
-    return;
-  }
+    const usuario = campoUsuario.value.trim();
+    const senha = campoSenha.value;
 
-  if (!emailHospitalarValido(usuario)) {
-    marcarCampoInvalido(campoUsuario);
-    exibirMensagem("Use um e-mail institucional autorizado, como nome@hospital.com.br.", "erro");
-    campoUsuario.focus();
-    return;
-  }
+    if (!usuario || !senha) {
+      if (!usuario) marcarCampoInvalido(campoUsuario);
+      if (!senha) marcarCampoInvalido(campoSenha);
+      exibirMensagem("Preencha o usuário e a senha para continuar.", "erro");
+      (!usuario ? campoUsuario : campoSenha).focus();
+      return;
+    }
 
-  const usuarioDeTeste = usuariosDeTeste[usuario];
-  const contaCadastrada = buscarContaCadastrada(usuario);
-  let perfilAutorizado = null;
+    alterarEstadoEnvio(true);
+    exibirMensagem("Autenticando...", "informacao");
 
-  if (usuarioDeTeste && usuarioDeTeste.senha === senha) {
-    perfilAutorizado = usuarioDeTeste.perfil;
-  } else if (contaCadastrada && contaCadastrada.senhaHash === (await gerarHash(senha))) {
-    perfilAutorizado = contaCadastrada.perfil;
-  }
+    try {
+      const resposta = await window.LogMedAPI.fazerLogin({ usuario, senha });
 
-  if (!perfilAutorizado) {
-    marcarCampoInvalido(campoUsuario);
-    marcarCampoInvalido(campoSenha);
-    exibirMensagem("E-mail ou senha inválidos. Verifique os dados e tente novamente.", "erro");
-    campoSenha.select();
-    return;
-  }
+      if (!resposta?.sucesso || !resposta?.usuario) {
+        marcarCampoInvalido(campoUsuario);
+        marcarCampoInvalido(campoSenha);
+        exibirMensagem(
+          resposta?.mensagem || resposta?.erro || "Usuário ou senha inválidos.",
+          "erro",
+        );
+        campoSenha.select();
+        return;
+      }
 
-  localStorage.setItem("usuarioLogado", usuario);
-  localStorage.setItem("perfilUsuario", perfilAutorizado);
-  localStorage.setItem(
-    "hospitalUsuario",
-    usuarioDeTeste?.hospital || contaCadastrada?.nomeInstituicao || "Hospital não informado",
-  );
+      const perfil = String(resposta.usuario.perfil || "").toLocaleLowerCase("pt-BR");
+      const destino = destinosPorPerfil[perfil];
 
-  if (campoLembrarAcesso.checked) {
-    localStorage.setItem("emailLembrado", usuario);
-  } else {
-    localStorage.removeItem("emailLembrado");
-  }
+      if (!destino) {
+        exibirMensagem("Seu perfil ainda não possui uma página de destino configurada.", "erro");
+        return;
+      }
 
-  exibirMensagem("Acesso autorizado. Redirecionando...", "sucesso");
-  botaoEntrar.disabled = true;
-  botaoEntrar.querySelector("span").textContent = "Acesso autorizado";
-
-  window.setTimeout(() => {
-    window.location.href = destinosPorPerfil[perfilAutorizado];
-  }, 900);
-});
-
-const emailLembrado = localStorage.getItem("emailLembrado");
-const emailCadastroRecente = sessionStorage.getItem("emailCadastroRecente");
-
-if (emailCadastroRecente) {
-  campoUsuario.value = emailCadastroRecente;
-  sessionStorage.removeItem("emailCadastroRecente");
-  exibirMensagem("Conta criada com sucesso. Entre com sua nova senha.", "sucesso");
-} else if (emailLembrado) {
-  campoUsuario.value = emailLembrado;
-  campoLembrarAcesso.checked = true;
-}
+      window.LogMedAuth.salvarSessao(resposta.usuario, resposta.token);
+      exibirMensagem("Login realizado com sucesso. Redirecionando...", "sucesso");
+      textoBotao.textContent = "Acesso autorizado";
+      window.setTimeout(() => window.location.assign(destino), 900);
+    } catch (erro) {
+      const mensagem = erro.tipo === "rede"
+        ? "Não foi possível conectar ao servidor. Verifique se o back-end está disponível."
+        : erro.message || "Não foi possível realizar o login.";
+      exibirMensagem(mensagem, "erro");
+    } finally {
+      if (!window.LogMedAuth.usuarioEstaLogado()) alterarEstadoEnvio(false);
+    }
+  });
+})();

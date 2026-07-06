@@ -64,36 +64,37 @@
 </div>
 <a class="botao-movimentacao" href="../transferencia/index.html?nova=1">+ Nova movimentação</a>
 </section>
+  <p class="mensagem-indicadores" id="mensagem-indicadores" role="status" aria-live="polite">Carregando indicadores...</p>
   <section class="grade-indicadores" aria-label="Indicadores logísticos">
 <article class="card-indicador">
 <i>▣</i>
 <div>
-<p>Insumos em estoque</p>
-<strong>1.248</strong>
+<p>Alas cadastradas</p>
+<strong id="indicador-alas">—</strong>
 </div>
-<span class="positivo">Estável</span>
+<span class="positivo">API</span>
 </article>
 <article class="card-indicador">
 <i class="validade">◷</i>
 <div>
-<p>Próximos do vencimento</p>
-<strong>12</strong>
+<p>Insumos cadastrados</p>
+<strong id="indicador-insumos">—</strong>
 </div>
-<span class="atencao">Atenção</span>
+<span class="positivo">API</span>
 </article>
 <article class="card-indicador">
 <i>⇄</i>
 <div>
-<p>Transferências hoje</p>
-<strong>28</strong>
+<p>Movimentações recentes</p>
+<strong id="indicador-movimentacoes">—</strong>
 </div>
-<span class="positivo">+8%</span>
+<span class="positivo">API</span>
 </article>
 <article class="card-indicador critico">
 <i>!</i>
 <div>
 <p>Alertas críticos</p>
-<strong>3</strong>
+<strong id="indicador-alertas-criticos">—</strong>
 </div>
 <span>Urgente</span>
 </article>
@@ -107,28 +108,8 @@
 </div>
 <a href="../historico/index.html">Ver histórico</a>
 </header>
-<ol class="linha-do-tempo">
-<li>
-<b>⇄</b>
-<div>
-<h3>Dipirona 500 mg transferida para a UTI</h3>
-<p>Farmácia Central → UTI • 10:32</p>
-</div>
-</li>
-<li>
-<b class="cadastro">+</b>
-<div>
-<h3>Novo lote de Cateter Venoso cadastrado</h3>
-<p>Entrada de estoque • 09:18</p>
-</div>
-</li>
-<li>
-<b class="aviso">!</b>
-<div>
-<h3>Contraste Iodado vence em 5 dias</h3>
-<p>Alerta automático • 08:45</p>
-</div>
-</li>
+<ol class="linha-do-tempo" id="movimentacoes-recentes">
+<li class="estado-integracao informacao">Carregando movimentações...</li>
 </ol>
 </section>
   <aside class="painel painel-alertas">
@@ -136,20 +117,9 @@
 <p class="etiqueta-pagina">Prioridade</p>
 <h2>Alertas que exigem ação</h2>
 </header>
-<article class="alerta-item vermelho">
-<b>3</b>
-<div>
-<strong>Alertas críticos</strong>
-<span>Atendimento imediato</span>
+<div id="resumo-alertas-dashboard">
+<p class="estado-integracao informacao">Carregando alertas...</p>
 </div>
-</article>
-<article class="alerta-item amarelo">
-<b>12</b>
-<div>
-<strong>Lotes a vencer</strong>
-<span>Próximos 30 dias</span>
-</div>
-</article>
 <a href="../alertas/index.html">Revisar todos os alertas →</a>
 </aside>
 </div>
@@ -157,7 +127,7 @@
 <header>
 <div>
 <p class="etiqueta-pagina">Monitoramento</p>
-<h2>Estoque crítico por setor</h2>
+<h2>Resumo de estoque</h2>
 </div>
 <a href="../estoque/index.html">Abrir estoque</a>
 </header>
@@ -166,45 +136,22 @@
 <thead>
 <tr>
 <th>Insumo</th>
-<th>Setor</th>
+<th>Código</th>
+<th>Ala</th>
 <th>Quantidade</th>
-<th>Mínimo</th>
 <th>Status</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>Soro fisiológico 500 ml</td>
-<td>Pronto atendimento</td>
-<td>18 un.</td>
-<td>40 un.</td>
-<td>
-<span class="status critico">Crítico</span>
-</td>
-</tr>
-<tr>
-<td>Luva cirúrgica M</td>
-<td>Centro cirúrgico</td>
-<td>52 cx.</td>
-<td>70 cx.</td>
-<td>
-<span class="status atencao">Baixo</span>
-</td>
-</tr>
-<tr>
-<td>Cateter periférico 22G</td>
-<td>UTI</td>
-<td>31 un.</td>
-<td>35 un.</td>
-<td>
-<span class="status observacao">Monitorar</span>
-</td>
-</tr>
+<tbody id="resumo-estoque-dashboard">
+<tr><td class="estado-integracao informacao" colspan="5">Carregando estoque...</td></tr>
 </tbody>
 </table>
 </div>
 </section>
 </main>
-<script src="../shared/js/operacoes.js"></script>
+<script src="../shared/js/config-api.js" defer></script>
+<script src="../shared/js/api.js" defer></script>
+<script src="../shared/js/auth.js" defer></script>
+<script src="./js/dashboard.js" defer></script>
 </body>
 </html>

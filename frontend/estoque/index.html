@@ -67,38 +67,35 @@
 </header>
 <section class="resumo-modulo">
 <article class="cartao-resumo">
-<span>Total de itens</span>
-<strong id="total-itens">1.248</strong>
+<span>Insumos cadastrados</span>
+<strong id="total-itens">—</strong>
 </article>
 <article class="cartao-resumo">
-<span>Lotes ativos</span>
-<strong>386</strong>
+<span>Alas representadas</span>
+<strong id="total-alas-estoque">—</strong>
 </article>
 <article class="cartao-resumo">
-<span>Estoque baixo</span>
-<strong>17</strong>
+<span>Em atenção</span>
+<strong id="total-atencao">—</strong>
 </article>
 <article class="cartao-resumo alerta">
 <span>Itens críticos</span>
-<strong>3</strong>
+<strong id="total-criticos">—</strong>
 </article>
 </section>
 <section class="painel-modulo">
 <header class="barra-painel">
 <h2>Insumos cadastrados</h2>
 <div class="filtros">
-<input class="campo-filtro campo-busca" type="search" placeholder="Buscar insumo ou lote">
-<select class="campo-filtro">
-<option>Todos os setores</option>
-<option>Farmácia Central</option>
-<option>UTI</option>
-<option>Centro Cirúrgico</option>
+<input class="campo-filtro campo-busca" id="busca-estoque" type="search" placeholder="Buscar código, insumo ou ala">
+<select class="campo-filtro" id="filtro-ala-estoque">
+<option value="">Todas as alas</option>
 </select>
-<select class="campo-filtro">
-<option>Todos os status</option>
-<option>Normal</option>
-<option>Baixo</option>
-<option>Crítico</option>
+<select class="campo-filtro" id="filtro-status-estoque">
+<option value="">Todos os status</option>
+<option value="normal">Normal</option>
+<option value="atencao">Atenção</option>
+<option value="critico">Crítico</option>
 </select>
 </div>
 </header>
@@ -106,71 +103,26 @@
 <table>
 <thead>
 <tr>
+<th>Código</th>
 <th>Insumo</th>
-<th>Lote</th>
-<th>Setor</th>
-<th>Validade</th>
 <th>Quantidade</th>
+<th>Unidade</th>
+<th>Ala</th>
+<th>Validade</th>
 <th>Status</th>
 </tr>
 </thead>
 <tbody id="corpo-tabela-estoque">
-<tr>
-<td>Dipirona 500 mg</td>
-<td>DIP-2406</td>
-<td>Farmácia Central</td>
-<td>18/12/2027</td>
-<td>420 un.</td>
-<td>
-<span class="status sucesso">Normal</span>
-</td>
-</tr>
-<tr>
-<td>Soro fisiológico 500 ml</td>
-<td>SOR-1182</td>
-<td>Pronto atendimento</td>
-<td>08/09/2027</td>
-<td>18 un.</td>
-<td>
-<span class="status critico">Crítico</span>
-</td>
-</tr>
-<tr>
-<td>Luva cirúrgica M</td>
-<td>LUV-0921</td>
-<td>Centro Cirúrgico</td>
-<td>22/03/2028</td>
-<td>52 cx.</td>
-<td>
-<span class="status atencao">Baixo</span>
-</td>
-</tr>
-<tr>
-<td>Cateter periférico 22G</td>
-<td>CAT-4410</td>
-<td>UTI</td>
-<td>14/01/2028</td>
-<td>31 un.</td>
-<td>
-<span class="status info">Monitorar</span>
-</td>
-</tr>
-<tr>
-<td>Contraste Iodado</td>
-<td>CON-0505</td>
-<td>Radiologia</td>
-<td>05/07/2026</td>
-<td>8 fr.</td>
-<td>
-<span class="status critico">Vencimento</span>
-</td>
-</tr>
+<tr><td class="estado-integracao informacao" colspan="7">Carregando insumos...</td></tr>
 </tbody>
 </table>
 </div>
 </section>
 </div>
 </main>
-<script src="../shared/js/operacoes.js"></script>
+<script src="../shared/js/config-api.js" defer></script>
+<script src="../shared/js/api.js" defer></script>
+<script src="../shared/js/auth.js" defer></script>
+<script src="./js/estoque.js" defer></script>
 </body>
 </html>

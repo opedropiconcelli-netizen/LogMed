@@ -68,33 +68,33 @@
 <section class="resumo-modulo">
 <article class="cartao-resumo">
 <span>Eventos hoje</span>
-<strong>142</strong>
+<strong id="total-eventos">—</strong>
 </article>
 <article class="cartao-resumo">
 <span>Entradas</span>
-<strong>47</strong>
+<strong id="total-entradas">—</strong>
 </article>
 <article class="cartao-resumo">
 <span>Transferências</span>
-<strong>82</strong>
+<strong id="total-transferencias">—</strong>
 </article>
 <article class="cartao-resumo">
 <span>Ajustes manuais</span>
-<strong>13</strong>
+<strong id="total-ajustes">—</strong>
 </article>
 </section>
 <section class="painel-modulo">
 <header class="barra-painel">
 <h2>Registro de atividades</h2>
 <div class="filtros">
-<input class="campo-filtro campo-busca" type="search" placeholder="Buscar item, lote ou responsável">
-<input class="campo-filtro" type="date" value="2026-06-30">
-<select class="campo-filtro">
-<option>Todos os eventos</option>
-<option>Entrada</option>
-<option>Transferência</option>
-<option>Ajuste</option>
-<option>Alerta</option>
+<input class="campo-filtro campo-busca" id="filtro-busca-historico" type="search" placeholder="Buscar descrição ou responsável">
+<input class="campo-filtro" id="filtro-data-historico" type="date">
+<select class="campo-filtro" id="filtro-tipo-historico">
+<option value="">Todos os eventos</option>
+<option value="entrada">Entrada</option>
+<option value="transferencia">Transferência</option>
+<option value="ajuste">Ajuste</option>
+<option value="alerta">Alerta</option>
 </select>
 </div>
 </header>
@@ -104,70 +104,24 @@
 <tr>
 <th>Data e hora</th>
 <th>Evento</th>
-<th>Item</th>
+<th>Descrição</th>
 <th>Origem / destino</th>
 <th>Responsável</th>
 <th>Situação</th>
 </tr>
 </thead>
 <tbody id="corpo-tabela-historico">
-<tr>
-<td>30/06/2026 • 10:32</td>
-<td>Transferência</td>
-<td>Dipirona 500 mg</td>
-<td>Farmácia → UTI</td>
-<td>Ana Lima</td>
-<td>
-<span class="status sucesso">Concluída</span>
-</td>
-</tr>
-<tr>
-<td>30/06/2026 • 09:18</td>
-<td>Cadastro de lote</td>
-<td>Cateter Venoso</td>
-<td>Almoxarifado</td>
-<td>Carlos Mendes</td>
-<td>
-<span class="status info">Registrado</span>
-</td>
-</tr>
-<tr>
-<td>30/06/2026 • 08:45</td>
-<td>Alerta de validade</td>
-<td>Contraste Iodado</td>
-<td>Radiologia</td>
-<td>Sistema</td>
-<td>
-<span class="status critico">Pendente</span>
-</td>
-</tr>
-<tr>
-<td>30/06/2026 • 08:12</td>
-<td>Ajuste de estoque</td>
-<td>Luva cirúrgica M</td>
-<td>Centro Cirúrgico</td>
-<td>Marina Costa</td>
-<td>
-<span class="status atencao">Auditado</span>
-</td>
-</tr>
-<tr>
-<td>29/06/2026 • 17:48</td>
-<td>Entrada</td>
-<td>Soro fisiológico</td>
-<td>Almoxarifado</td>
-<td>Paulo Reis</td>
-<td>
-<span class="status sucesso">Concluída</span>
-</td>
-</tr>
+<tr><td class="estado-integracao informacao" colspan="6">Carregando movimentações...</td></tr>
 </tbody>
 </table>
 </div>
 </section>
 </div>
 </main>
-<script src="../shared/js/operacoes.js"></script>
+<script src="../shared/js/config-api.js" defer></script>
+<script src="../shared/js/api.js" defer></script>
+<script src="../shared/js/auth.js" defer></script>
+<script src="./js/historico.js" defer></script>
 </body>
 </html>
 

@@ -69,19 +69,19 @@
 <section class="resumo-modulo">
 <article class="cartao-resumo alerta">
 <span>Críticos</span>
-<strong>3</strong>
+<strong id="total-alertas-criticos">—</strong>
 </article>
 <article class="cartao-resumo">
-<span>Estoque baixo</span>
-<strong>17</strong>
+<span>Em atenção</span>
+<strong id="total-alertas-atencao">—</strong>
 </article>
 <article class="cartao-resumo">
-<span>Validade próxima</span>
-<strong>12</strong>
+<span>Nível normal</span>
+<strong id="total-alertas-normais">—</strong>
 </article>
 <article class="cartao-resumo">
-<span>Resolvidos hoje</span>
-<strong>9</strong>
+<span>Total de alertas</span>
+<strong id="total-alertas">—</strong>
 </article>
 </section>
 <div class="grade-dupla">
@@ -89,76 +89,31 @@
 <header class="barra-painel">
 <h2>Alertas ativos</h2>
 <div class="filtros">
-<select class="campo-filtro">
-<option>Todas as prioridades</option>
-<option>Crítica</option>
-<option>Alta</option>
-<option>Moderada</option>
+<select class="campo-filtro" id="filtro-nivel-alertas">
+<option value="">Todas as prioridades</option>
+<option value="critico">Crítica</option>
+<option value="atencao">Atenção</option>
+<option value="normal">Normal</option>
 </select>
 </div>
 </header>
-<ul class="lista-alertas">
-<li class="alerta-card alerta-vermelho">
-<span class="sinal-alerta">!</span>
-<div>
-<span class="rotulo-alerta">Crítico • Validade</span>
-<h3>Contraste Iodado vence em 5 dias</h3>
-<p>Lote CON-0505 • Radiologia • 8 frascos</p>
-</div>
-<button>Revisar</button>
-</li>
-<li class="alerta-card alerta-vermelho">
-<span class="sinal-alerta">!</span>
-<div>
-<span class="rotulo-alerta">Crítico • Estoque</span>
-<h3>Soro fisiológico abaixo do nível mínimo</h3>
-<p>Pronto atendimento • 18 de 40 unidades mínimas</p>
-</div>
-<button>Revisar</button>
-</li>
-<li class="alerta-card alerta-amarelo">
-<span class="sinal-alerta">◷</span>
-<div>
-<span class="rotulo-alerta">Alta • Validade</span>
-<h3>Doze lotes vencem nos próximos 30 dias</h3>
-<p>Distribuídos em quatro setores</p>
-</div>
-<button>Detalhes</button>
-</li>
-<li class="alerta-card alerta-azul">
-<span class="sinal-alerta">⇄</span>
-<div>
-<span class="rotulo-alerta">Moderada • Transferência</span>
-<h3>Divergência na transferência TRF-2841</h3>
-<p>Quantidade recebida diferente da quantidade enviada</p>
-</div>
-<button>Verificar</button>
-</li>
+<ul class="lista-alertas" id="lista-alertas">
+<li class="estado-integracao informacao">Carregando alertas...</li>
 </ul>
 </section>
 <aside class="painel-modulo cartao-lateral">
 <h2>Distribuição por setor</h2>
-<div class="dado-lateral">
-<span>Farmácia Central</span>
-<strong>8 alertas</strong>
-</div>
-<div class="dado-lateral">
-<span>Pronto atendimento</span>
-<strong>6 alertas</strong>
-</div>
-<div class="dado-lateral">
-<span>UTI</span>
-<strong>4 alertas</strong>
-</div>
-<div class="dado-lateral">
-<span>Radiologia</span>
-<strong>3 alertas</strong>
+<div id="distribuicao-alertas">
+<p class="estado-integracao informacao">Carregando distribuição...</p>
 </div>
 </aside>
 </div>
 </div>
 </main>
-<script src="../shared/js/operacoes.js"></script>
+<script src="../shared/js/config-api.js" defer></script>
+<script src="../shared/js/api.js" defer></script>
+<script src="../shared/js/auth.js" defer></script>
+<script src="./js/alertas.js" defer></script>
 </body>
 </html>
 
